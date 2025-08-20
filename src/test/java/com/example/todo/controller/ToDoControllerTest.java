@@ -30,7 +30,7 @@ public class ToDoControllerTest {
     private ObjectMapper objectMapper;
 
     @MockitoBean
-    private ToDoService toDoService;  // Replaces the deprecated @MockBean
+    private ToDoService toDoService;
 
     @Test
     void testGetAllToDos() throws Exception {

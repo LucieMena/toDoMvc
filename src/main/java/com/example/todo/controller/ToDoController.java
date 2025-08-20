@@ -17,7 +17,6 @@ public class ToDoController {
 
     private final ToDoService toDoService;
 
-    // Constructor injection for the ToDoService
     public ToDoController(ToDoService toDoService) {
         this.toDoService = toDoService;
     }
