@@ -3,13 +3,14 @@ package com.example.todo.controller;
 import com.example.todo.dto.ToDoDto;
 import com.example.todo.service.ToDoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.List;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
@@ -25,15 +26,23 @@ public class ToDoControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Mock
-    private ToDoService toDoService;
-
     @Autowired
     private ObjectMapper objectMapper;
 
-    @BeforeEach
-    void setup() {
-        // Initialize mocks before each test
+    @MockitoBean
+    private ToDoService toDoService;  // Replaces the deprecated @MockBean
+
+    @Test
+    void testGetAllToDos() throws Exception {
+        ToDoDto todo1 = new ToDoDto(1L, "Task 1", false, 1);
+        ToDoDto todo2 = new ToDoDto(2L, "Task 2", true, 2);
+
+        when(toDoService.getAllToDos()).thenReturn(List.of(todo1, todo2));
+
+        mockMvc.perform(get("/todos"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].title", is("Task 1")))
+                .andExpect(jsonPath("$[1].title", is("Task 2")));
     }
 
     @Test
