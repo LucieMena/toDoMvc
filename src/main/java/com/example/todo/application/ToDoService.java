@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ToDoServiceImpl implements ToDoServicePort {
+public class ToDoService implements ToDoServicePort {
 
     private final ToDoRepositoryPort toDoRepository;
 
-    public ToDoServiceImpl(ToDoRepositoryPort toDoRepository) {
+    public ToDoService(ToDoRepositoryPort toDoRepository) {
         this.toDoRepository = toDoRepository;
     }
 

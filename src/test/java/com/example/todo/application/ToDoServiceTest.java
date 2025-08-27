@@ -13,15 +13,15 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class ToDoServiceImplTest {
+class ToDoServiceTest {
 
     private ToDoRepositoryPort repository;
-    private ToDoServiceImpl service;
+    private ToDoService service;
 
     @BeforeEach
     void setUp() {
         repository = mock(ToDoRepositoryPort.class);
-        service = new ToDoServiceImpl(repository);
+        service = new ToDoService(repository);
     }
 
     @Test
