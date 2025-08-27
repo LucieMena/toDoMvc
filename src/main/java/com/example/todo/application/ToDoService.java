@@ -1,20 +1,20 @@
 package com.example.todo.application;
 
 import com.example.todo.domain.ToDo;
+import com.example.todo.domain.exception.DuplicateToDoException;
+import com.example.todo.domain.exception.ToDoNotFoundException;
 import com.example.todo.domain.ports.ToDoRepositoryPort;
 import com.example.todo.domain.ports.ToDoServicePort;
-import com.example.todo.exception.DuplicateToDoException;
-import com.example.todo.exception.ToDoNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ToDoServiceImpl implements ToDoServicePort {
+public class ToDoService implements ToDoServicePort {
 
     private final ToDoRepositoryPort toDoRepository;
 
-    public ToDoServiceImpl(ToDoRepositoryPort toDoRepository) {
+    public ToDoService(ToDoRepositoryPort toDoRepository) {
         this.toDoRepository = toDoRepository;
     }
 

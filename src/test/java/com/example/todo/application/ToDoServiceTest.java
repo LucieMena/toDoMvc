@@ -1,9 +1,9 @@
 package com.example.todo.application;
 
 import com.example.todo.domain.ToDo;
+import com.example.todo.domain.exception.DuplicateToDoException;
+import com.example.todo.domain.exception.ToDoNotFoundException;
 import com.example.todo.domain.ports.ToDoRepositoryPort;
-import com.example.todo.exception.DuplicateToDoException;
-import com.example.todo.exception.ToDoNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,15 +13,15 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class ToDoServiceImplTest {
+class ToDoServiceTest {
 
     private ToDoRepositoryPort repository;
-    private ToDoServiceImpl service;
+    private ToDoService service;
 
     @BeforeEach
     void setUp() {
         repository = mock(ToDoRepositoryPort.class);
-        service = new ToDoServiceImpl(repository);
+        service = new ToDoService(repository);
     }
 
     @Test
